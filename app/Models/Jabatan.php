@@ -1,0 +1,27 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Jabatan extends Model
+{
+    use HasFactory;
+
+    protected $table = 'jabatan';
+
+    protected $fillable = [
+        'jabatan',
+    ];
+
+    public function user()
+    {
+        return $this->hasMany(User::class, 'jabatan_id', 'id');
+    }
+
+    public function gaji()
+    {
+        return $this->hasMany(Gaji::class, 'jabatan_id', 'id');
+    }
+}
